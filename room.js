@@ -21,13 +21,23 @@ document.getElementById("name").innerHTML=user;
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  roomdetail =0;
-  function addroom()
-  {
-    roomdetail = roomdetail + 1;   
-      room_name = "#"+document.getElementById("roomname").value
-      firebase.database().ref("/").child("Room Name and detail  " + roomdetail ).update({
-          Roomname:room_name,
-          createdby:user
-      });
-  }
+  function addroom() {
+    roomname=document.getElementById("myname").value;
+    firebase.database().ref("/").child(roomname).update({
+          by:user
+    });
+    localStorage.setItem("roomname",roomname);
+}
+
+function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
+     Room_names = childKey;
+    console.log(Room_names);
+    row="<div class='room_name' id="+Room_names+" onclick='gotoroom(this.id)'>"+Room_names+"</div>";
+    document.getElementById("output").innerHTML+=row;
+    });});}
+getData();
+
+function gotoroom(name) {
+   console.log(name);
+   localStorage.setItem("roomname",name);
+}

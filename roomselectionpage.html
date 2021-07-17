@@ -20,12 +20,10 @@
 
 </head>
 <body>
-<div class="container1">
+
 <button id="logout" onclick="loginout()"class="glyphicon glyphicon-log-out btn btn-danger">Logout</button>
 <br>
-<div class="container">
-	<h4 class="btn btn sussucsse"><b>My Name Is</b></h4> <label id="name"></label> 
-</div>
+
 
 <center>
 	<div class="me">
@@ -35,9 +33,11 @@
 				<img src="Children Talk.png">
 			</sup>
 		</h1>
-		<h3 class="color_white"></h3>
+		<h3 class="color_white" id="name"></h3>
+
+		<p>Note: Don't put (hi) as a room name. Please don't use any symbol in the room name </p>
 		<div class="form-group input_div_room_page">
-			<input id="roomname" type="text" placeholder="Type Your Room Name">
+			<input with="30%"id="myname" type="text" placeholder="Type Your Room Name">
 			<button class="btn btn-success" onclick="addroom()">#Add Room</button>
 		</div>
 		
